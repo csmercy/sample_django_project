@@ -1,13 +1,9 @@
-{% load static %}
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sample Project</title>
-    <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
     <style>
         body {
             margin: 0;
@@ -54,9 +50,7 @@
             font-size: 14px;
             padding: 20px;
         }
-        
     </style>
-    
 </head>
 <body>
 
@@ -72,12 +66,25 @@
         </p>
 
     <p>
-            Choose what you'd like to check: 
-            <br>
-            <a href="{% url 'historical_weather' %}" >Historical Data</a><br>
-            <a href="{% url 'weather_forecast' %}" >Weather forecast</a>
-        
-    </p>
+        <form action="/historical_weather/" method = "POST" >
+            Search historical data: <br><br>
+            <table>
+                <tr>
+                    <td><label>zipcode:</label></td>
+                    <td><input type="text" name="zipcode" value=""><br></td>
+                </tr>
+                <tr>
+                    <td><label>Date:</label></td>
+                    <td><input type="date" name="historical_date" value="2025-03-01"></td>
+                </tr>
+                <tr>
+                    <td><input type="reset" value="Reset"></td>
+                    <td><input type="submit" value="Submit"></td>
+                </tr>
+            </table>
+        </form>
+
+        </p>
     </div>
 </div>
 

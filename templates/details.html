@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Project</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f4f6;
+            color: #333;
+        }
+
+        header {
+            background: #4f46e5;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #4f46e5;
+        }
+
+        .card p {
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+            font-size: 14px;
+            padding: 20px;
+        }
+        
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+            width: 80%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    Sample Project for CISC359 Web Programming
+</header>
+
+<div class="container">
+    <div class="card">
+        <h2>Hello Everyone!</h2>
+        <p>
+            This is a simple project that demonstrate how we can use Django to develop a web programming.
+        </p>
+
+    <p>
+        <a href="{% url 'historical_weather' %}" >Historical Data</a><br>
+        <a href="{% url 'weather_forecast' %}" >Weather forecast</a>
+        
+    </p>
+    <p>
+        <h3>Weather details for {{ zipcode }} (Updated at {{ updated_time }})</h3>
+    
+        Towns with zipcode={{ zipcode }}:<br>     
+        <br>
+        
+        Temperature: {{ temperature }} <br>
+        Humidity: {{ humidity }} <br>
+        Windspeed: {{ windspeed }} <br>
+        
+        <h3>Forecast for 5 days:</h3>
+        <br>
+        <table>
+            <tr>
+                <th>Time</th>
+                <th>Temperature(F)</th>
+                <th>Humidity(%)</th>
+                <th>Wind Speed(mph)</th>
+            </tr>
+            {% for weather in weather_list  %}
+            <tr>
+                <th>{{ weather.updated_time }}</th>
+                <th>{{ weather.temperature }}</th>
+                <th>{{ weather.humidity }}</th>
+                <th>{{ weather.windspeed }}</th>
+            </tr>
+            {% endfor %}
+        
+        
+        </table>
+        </p>
+    </div>
+</div>
+
+<footer>
+    © 2025 CISC359 Mercy University. All rights reserved.
+</footer>
+
+</body>
+</html>
+
